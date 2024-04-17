@@ -1,5 +1,4 @@
 import { Montserrat } from "next/font/google";
-import AppNavBar from "../../src/components/AppNavBar";
 import { pwaTrackingListeners } from "../scripts/pwaEventlisteners";
 import "./globals.css";
 import Providers from "./providers";
@@ -31,10 +30,7 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <body className={inter.className}>
         <Providers>
-          <main
-            className={`flex flex-col h-svh text-foreground bg-background ${inter.variable} font-sans`}
-          >
-            <AppNavBar />
+          <main>
             <div className="container mx-auto flex-1">{children}</div>
           </main>
         </Providers>
