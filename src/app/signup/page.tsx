@@ -1,6 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { createWallet } from "./actions";
 
 export default function SignUp() {
   const router = useRouter();
@@ -8,8 +9,10 @@ export default function SignUp() {
   const handleChange = (e) => {
     setEmail(e.target.value);
   };
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    const { publicKey } = await createWallet(email);
     document.cookie = `email=${email}`;
+    document.cookie = `walletAddress=${publicKey}`;
     router.replace("/");
   };
   return (
