@@ -38,7 +38,7 @@ export default function Gallery({
   const [activePhoto, setActivePhoto] = useState<string | null>(null);
   const [photos, setPhotos] = useState(initialPhotos);
   const [nfts, setNFTs] = useState(initialNFTs);
-
+  console.log(nfts);
   const handleMintNFT = async () => {
     await mintNFT(email, activePhoto);
     setNFTs(await getNFTFromWallet(walletAddress));
@@ -66,7 +66,7 @@ export default function Gallery({
       </div>
       <div className="flex">
         {activeTab === "verified"
-          ? nfts.map((nft) => {
+          ? nfts?.map((nft) => {
               return (
                 <Image
                   width={200}
