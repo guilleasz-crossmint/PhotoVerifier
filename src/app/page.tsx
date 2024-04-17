@@ -17,7 +17,13 @@ export default async function Home() {
 
   return (
     <>
-      <Image src="/logo.svg" alt="logo" width={34} height={30} />
+      <Image
+        className="mt-1.5 mx-auto"
+        src="/logo.svg"
+        alt="logo"
+        width={34}
+        height={30}
+      />
       <Gallery photos={photos} />
     </>
   );
