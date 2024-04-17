@@ -1,28 +1,25 @@
-"use client";  
+"use client";
 
 import React, { useState } from 'react';
 import { createWallet } from './signup/actions'; 
+import { mintNFT } from './export/mint';
+
 export default function Home() {
   const [email, setEmail] = useState('');
-
-  const openCamera = () => {
-    navigator.mediaDevices.getUserMedia({
-      video: true,
-    }).then(stream => {
-    }).catch(err => {
-      console.error("Error accessing the camera: ", err);
-    });
-  };
+  const [imageUrl, setImageUrl] = useState(''); 
 
   const handleCreateWallet = () => {
     createWallet(email);
   };
 
+  const handleMintNFT = () => {
+    mintNFT(email, imageUrl);
+  };
+  
   return (
     <div className="flex h-full flex-col items-center justify-center gap-20">
       <div className="flex flex-col text-center gap-2 mt-[45%] md:mt-[15%]">
         <h1>Photo Verifier</h1>
-        <button onClick={openCamera}>Take Photo</button>
         <input
           type="email"
           value={email}
@@ -31,6 +28,7 @@ export default function Home() {
           className="mt-4"
         />
         <button onClick={handleCreateWallet}>Create Wallet</button>
+        <button onClick={handleMintNFT} className="mt-4">Mint NFT</button>
       </div>
     </div>
   );
